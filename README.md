@@ -6,7 +6,8 @@ Print Cleaner is a Visual Studio Code extension that allows you to comment out p
 
 - Comments out print statements in Python, JavaScript, and TypeScript files within the project directory.
 - Skips commenting print statements if the previous line contains `# required` or `// required`.
-- Works with multiple Python, JavaScript, and TypeScript files in the workspace.
+- Works with individual files, selected files, or the entire workspace.
+- Supports Python, JavaScript, and TypeScript files.
 
 ## Installation
 
@@ -18,12 +19,16 @@ Print Cleaner is a Visual Studio Code extension that allows you to comment out p
 
 ## Usage
 
-1. Open your Python project in Visual Studio Code.
+1. Open your project in Visual Studio Code.
 2. Press `Ctrl+Shift+P` to open the Command Palette.
 3. Type "Print Cleaner: Remove Print Statement" and select the command from the list.
-4. The extension will process all Python files in the workspace and comment out the print statements.
-5. If a line containing `#required` precedes a print statement, it will be skipped and not commented.
-6. After processing, a message will be displayed to indicate that the print statements have been commented out.
+4. Choose one of the following options:
+   - "Current File": Comments out print statements in the currently active file.
+   - "Select File(s)": Allows you to select multiple files from the project directory to comment out print statements.
+   - "Workspace": Comments out print statements in all Python, JavaScript, and TypeScript files in the workspace.
+5. The extension will process the selected files or workspace and comment out the print statements.
+6. If a line containing `# required` or `// required` precedes a print statement, it will be skipped and not commented.
+7. After processing, a message will be displayed to indicate that the print statements have been commented out.
 
 ## License
 
