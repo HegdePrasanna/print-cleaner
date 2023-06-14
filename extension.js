@@ -3,6 +3,7 @@
 const vscode = require('vscode');
 const fs = require('fs');
 const path = require('path');
+const { cleanPythonFiles, cleanJSFiles } = require('./utils');
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 
@@ -17,29 +18,39 @@ function activate(context) {
 
 	let disposable = vscode.commands.registerCommand('print-cleaner.removePrintStatement', function () {
 		const pythonFiles = vscode.workspace.findFiles('**/*.py', '**/node_modules/**', 1000);
-		pythonFiles.then((files) => {
-			files.forEach((fileUri) => {
-				const filePath = fileUri.fsPath;
-				const fileContent = fs.readFileSync(filePath, 'utf-8');
-				let lines = fileContent.split("\n");
+		const jsTsFiles = vscode.workspace.findFiles('**/*.{js,ts}', '**/node_modules/**', 1000);
+		// pythonFiles.then((files) => {
+		// 	files.forEach((fileUri) => {
+		// 		const filePath = fileUri.fsPath;
+		// 		const fileContent = fs.readFileSync(filePath, 'utf-8');
+		// 		let lines = fileContent.split("\n");
 				
-				for (let i = 1; i < lines.length; i++) {
-					const currentLine = lines[i];
-					const previousLine = lines[i - 1];
+		// 		for (let i = 1; i < lines.length; i++) {
+		// 			const currentLine = lines[i];
+		// 			const previousLine = lines[i - 1];
 					
-					if (!previousLine.includes("#required") && currentLine.includes("print(")) {
-						const cleanedLine = currentLine.replace("print(", `# print(`);
-						lines[i] = cleanedLine;
-					}
-				}
+		// 			if (!previousLine.includes("#required") && currentLine.includes("print(")) {
+		// 				const cleanedLine = currentLine.replace("print(", `# print(`);
+		// 				lines[i] = cleanedLine;
+		// 			}
+		// 		}
 				
-				const cleanedContent = lines.join("\n");
-				fs.writeFileSync(filePath, cleanedContent, 'utf-8');
-			});
-		});
+		// 		const cleanedContent = lines.join("\n");
+		// 		fs.writeFileSync(filePath, cleanedContent, 'utf-8');
+		// 	});
+		// });
 		
 		// Display a message box to the user
 		// vscode.window.showInformationMessage('Hello World from Print Cleaner!');
+		
+		pythonFiles.then((pythonFileUris) => {
+            cleanPythonFiles(pythonFileUris);
+        });
+
+		jsTsFiles.then((jsTsFileUris) => {
+            cleanJSFiles(jsTsFileUris);
+        });
+
 	});
 	context.subscriptions.push(disposable);
 }
