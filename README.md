@@ -1,12 +1,12 @@
 # Print Cleaner
 
-Print Cleaner is a Visual Studio Code extension that allows you to comment out print statements in Python files with the option to exclude statements that follow a line containing `#required`. This extension helps in cleaning up code by quickly and easily commenting out print statements that are no longer needed for debugging or logging purposes.
+Print Cleaner is a Visual Studio Code extension that allows you to comment out print statements in Python files with the option to exclude statements that follow a particular pattern. This extension helps in cleaning up code by quickly and easily commenting out print statements that are no longer needed for debugging or logging purposes.
 
 ## Features
 
-- Comments out print statements in Python files.
-- Skips commenting print statements if the previous line contains `#required`.
-- Works with multiple Python files in the workspace.
+- Comments out print statements in Python, JavaScript, and TypeScript files within the project directory.
+- Skips commenting print statements if the previous line contains `# required` or `// required`.
+- Works with multiple Python, JavaScript, and TypeScript files in the workspace.
 
 ## Installation
 
