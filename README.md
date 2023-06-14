@@ -40,7 +40,7 @@ Contributions to Print Cleaner are welcome! If you encounter any issues or have 
 
 ## Credits
 
-Print Cleaner is developed and maintained by [Prasanna Hegde](https://github.com/HegdePrasanna).
+Print Cleaner is developed and maintained by [Prasanna Hegde](https://github.com/HegdePrasanna) with the help of internet.
 
 ## Feedback
 
